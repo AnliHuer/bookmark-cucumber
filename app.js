@@ -17,5 +17,11 @@ app.get('/', function (req, res){
     res.render('index');
 });
 
-app.listen(3000);
-console.log('listening : 3000');
+route.setRoutes(app);
+
+app.listen(3000,function(){
+  console.log('hello world!');
+});
+
+
+module.exports = app;
