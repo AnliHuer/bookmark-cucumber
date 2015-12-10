@@ -1,0 +1,51 @@
+body{
+  text-align: center;
+}
+
+.form-area{
+  width: 80%;
+  background-color: #e785f2;
+  background-size: auto  100%;
+  margin: 10px auto;
+}
+
+.search-bar{
+  margin: 2% auto;
+  width:85%;
+  height: 35px;
+  font-size: 150%;
+}
+
+.search-item{
+  margin: auto 100px;
+}
+
+.search-item ul{
+  padding: 0%;
+}
+
+ul li{
+  list-style: none;
+}
+
+.bookmark-content{
+  text-align: left;
+  font-size: 120%;
+  color: #494949;
+}
+
+.bookmark-datetime{
+  margin-right: -75%;
+  color: #c3c3c3;
+  font-style: italic;
+}
+
+hr{
+  border-style: dashed;
+  border-color: #e785f2;
+}
+
+.highlight{
+  background-color: #e785f2;
+  color: #ffffff;
+}
