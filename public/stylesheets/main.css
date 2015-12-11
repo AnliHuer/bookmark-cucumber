@@ -39,7 +39,7 @@ ul li{
 }
 
 .bookmark-datetime{
-  margin-right: -65%;
+  margin-right: -55%;
   color: #c3c3c3;
   font-style: italic;
   display: inline-block;
@@ -47,6 +47,11 @@ ul li{
 
 .bookmark-delete{
   float:right;
+  display: inline-block;
+}
+
+.add-area{
+  margin: auto 8%;
 }
 
 hr{
