@@ -5,8 +5,15 @@
      <input type="text" class="search-bar">
   </form>
   　 <div class="search-item">
+       {{#each bookmarks}}
   　　  <ul class="search-list">
+           <li class="bookmark-content">{{title}}</li>
+           <li class="bookmark-datetime">@{{created}}</li>
+           <button class="bookmark-delete">删除</button>
+           <hr>
     　　</ul>
+      {{/each}}
   　 </div>
+    <button type="button" class="bookmark-add">增加</button>
 </div>
 　　
