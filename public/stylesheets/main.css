@@ -4,7 +4,7 @@ body{
 
 .form-area{
   width: 80%;
-  background-color: #e785f2;
+  background-color: #337ab7;;
   background-size: auto  100%;
   margin: 10px auto;
 }
@@ -47,19 +47,14 @@ ul li{
 
 .bookmark-delete{
   float:right;
-  margin-right: 2%;
-}
-
-.bookmark-add{
-  margin-left: -80%;
 }
 
 hr{
   border-style: dashed;
-  border-color: #e785f2;
+  border-color: #337ab7;
 }
 
 .highlight{
-  background-color: #e785f2;
+  background-color: #337ab7;
   color: #ffffff;
 }
