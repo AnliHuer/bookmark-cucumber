@@ -1,20 +1,11 @@
 var bookmarks = require('../data/bookmark.json');
-var timeFormat = require('../controllers/time-format');
+var allElemFormat = require('../controllers/all-elem-format');
 
 function SearchItem(){}
 
 
 SearchItem.prototype.search = function(req,res){
-  var result = [];
-
-  bookmarks.forEach(function(val){
-    result.push({
-      title:val.title,
-      created:timeFormat(val.created)
-    });
-  });
-
-  res.render('index',{bookmarks:result});
+  res.render('index',{bookmarks:allElemFormat(bookmarks)});
 };
 
 

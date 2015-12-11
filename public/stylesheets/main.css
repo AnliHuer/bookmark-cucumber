@@ -63,3 +63,7 @@ hr{
   background-color: #337ab7;
   color: #ffffff;
 }
+
+.inputEmpty{
+  color:red
+}
