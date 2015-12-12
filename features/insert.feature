@@ -1,18 +1,8 @@
-Feature: insert bookmarks
-
-Scenario: click button to insert bookmarks and insert success
-   Given open the homepage
-   When click the insert button
-   And  open the insert modal
-   Then input bookmarks name and address
-   And click the save button
-   Then insert success
-
-
-Scenario: click button to insert bookmarks and insert failed
-  Given open the homepage
-  When click the insert button
-  And  open the insert modal
-  Then input bookmarks name and address
-  And click the save button
-  Then insert falied
+Feature: Insert
+	Scenario: Insert bookmarks
+		* Open the homepage second
+    * click the insert button
+		* input name "csdn" and address "www.1234.com"
+    * click sure button
+		* search "csdn"
+    * Have 5 result
