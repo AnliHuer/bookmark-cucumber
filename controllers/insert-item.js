@@ -1,9 +1,9 @@
 var bookmarks = require('../data/bookmark.json');
 var allElemFormat = require('../controllers/all-elem-format');
 
-function InsertItem(){}
+function Bookmarks(){}
 
-InsertItem.prototype.insert = function(req,res){
+Bookmarks.prototype.insert = function(req,res){
 
   bookmarks.push(
     {
@@ -16,4 +16,7 @@ InsertItem.prototype.insert = function(req,res){
   res.send(allElemFormat(bookmarks));
 };
 
-module.exports = InsertItem;
+
+
+
+module.exports = Bookmarks;

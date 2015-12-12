@@ -20,7 +20,41 @@ function setRenderString(resq){
 }
 
 
- function pagination(){
+function searchHightLight(word,resq){
+  var regExp = new RegExp(word, 'gim');
+  var list = '';
+  var totalBookmarksNum = 0;
+
+  resq.forEach(function(val) {
+      if (val.title.search(regExp) > 0) {
+        totalBookmarksNum++;
+        var newTitle = val.title.replace(regExp, '<span class="highlight">$&</span>');
+        list +='<div class="search-list">'+
+          "<button name='bookmark-delete' class='btn btn-mini btn-primary bookmark-delete' type='button'>删除</button>"+
+          '<div class="bookmark-content">'+ newTitle +'</div>'+
+          "<hr>"+
+          '</div>';
+      }
+  });
+
+  $('.totalBookmarksNum').html('共有'+totalBookmarksNum+'条记录');
+  $('.search-item').prepend(list);
+  $('.search-item').append('<button id="bookmark-add" class="btn btn-large btn-block btn-primary" type="button" data-toggle="modal" data-target="#addModal">增加</button>');
+
+  pagination();
+}
+
+
+function removeModalValue(){
+  $('.add-bookmark-name').val('');
+  $('.add-bookmark-address').val('');
+  $('.add-bookmark-address').parent().prev().empty();
+  $('.add-bookmark-address').parent().prev().append('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">  &times; </button>'+
+  '<h4 class="modal-title" id="myModalLabel"> 添加书签 </h4>'
+  );
+}
+
+function pagination(){
 //   var totalPages = bookmarks.length % 10 === 0 ? bookmarks.length / 10 : bookmarks.length / 10 + 1;
    $.jqPaginator('#pagination', {
          totalPages: 10,
@@ -53,10 +87,7 @@ function insertBookmarks(){
     var address = $('.add-bookmark-address').val();
     var time = new Date().getTime();
 
-    $('.add-bookmark-address').parent().prev().empty();
-    $('.add-bookmark-address').parent().prev().append('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">  &times; </button>'+
-    '<h4 class="modal-title" id="myModalLabel"> 添加书签 </h4>'
-    );
+    removeModalValue();
 
     if(name === ''){
       $('.add-bookmark-name').parent().prev().append("<span class='inputEmpty'>" + "请输入书签名称!" + "</span>");
@@ -77,33 +108,16 @@ function insertBookmarks(){
 function searchBookmarks(){
   $('.search-bar').on('keyup', function() {
     var word = $('.search-bar').val();
-    var regExp = new RegExp(word, 'gim');
-    var list = '';
-    var totalBookmarksNum = 0;
 
     $('.search-item').empty();
     $('.search-item').append('<ul class="pagination" id="pagination"></ul>');
 
     $.get('/search', function(resq) {
-
-      resq.forEach(function(val) {
-        if (val.title.search(regExp) > 0) {
-          totalBookmarksNum++;
-          var newTitle = val.title.replace(regExp, '<span class="highlight">$&</span>');
-          list +='<div class="search-list">'+
-            "<button name='bookmark-delete' class='btn btn-mini btn-primary bookmark-delete' type='button'>删除</button>"+
-            '<div class="bookmark-content">'+ newTitle +'</div>'+
-            "<hr>"+
-            '</div>';
+        if(word){
+          searchHightLight(word,resq);
+        }else{
+          setRenderString(resq);
         }
-      });
-
-      $('.totalBookmarksNum').html('共有'+totalBookmarksNum+'条记录');
-      $('.search-item').prepend(list);
-      $('.search-item').append('<button id="bookmark-add" class="btn btn-large btn-block btn-primary" type="button" data-toggle="modal" data-target="#addModal">增加</button>');
-
-      pagination();
-
     });
  });
 }
@@ -112,18 +126,13 @@ function searchBookmarks(){
 $(function(){
 
   $('#bookmark-add').on('click',function(){
-    $('.add-bookmark-address').parent().prev().empty();
-    $('.add-bookmark-address').parent().prev().append('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">  &times; </button>'+
-    '<h4 class="modal-title" id="myModalLabel"> 添加书签 </h4>'
-    );
+    removeModalValue();
   });
 
   pagination();
 
   searchBookmarks();
-
   deleteBookmarks();
-
   insertBookmarks();
 
 });
