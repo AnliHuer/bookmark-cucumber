@@ -84,7 +84,7 @@ function searchBookmarks(){
     $('.search-item').empty();
     $('.search-item').append('<ul class="pagination" id="pagination"></ul>');
 
-    $.get('/index', function(resq) {
+    $.get('/search', function(resq) {
 
       resq.forEach(function(val) {
         if (val.title.search(regExp) > 0) {
