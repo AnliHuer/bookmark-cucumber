@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var InsertItem = require('../../controllers/insert-item');
-var insertItem = new InsertItem();
+var Bookmarks = require('../../controllers/bookmarks');
+var bookmarks = new Bookmarks();
 
-router.post('/', insertItem.insert);
+router.post('/', bookmarks.insert);
 
 module.exports = router;

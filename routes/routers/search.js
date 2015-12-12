@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var SearchItem = require('../../controllers/search-item');
-var searchItem = new SearchItem();
+var Bookmarks = require('../../controllers/bookmarks');
+var bookmarks = new Bookmarks();
 
-router.get('/', searchItem.search);
+router.get('/', bookmarks.search);
 
 module.exports = router;
