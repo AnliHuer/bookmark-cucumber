@@ -5,9 +5,7 @@ function SearchItem(){}
 
 
 SearchItem.prototype.search = function(req,res){
-  res.render('index',{bookmarks:allElemFormat(bookmarks)});
+  res.send(allElemFormat(bookmarks));
 };
-
-
 
 module.exports = SearchItem;

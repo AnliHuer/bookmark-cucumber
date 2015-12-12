@@ -2,22 +2,27 @@
 
 <div>
   <form class="form-area" action="index.html" method="post">
-     <input type="text" class="search-bar">
+     <input type="text" class="search-bar" placeholder="Please Input">
   </form>
-　 <div class="search-item">
-     {{#each bookmarks}}
-  　　  <div class="search-list">
-           <div class="bookmark-content">{{title}}</div>
-           <div class="bookmark-datetime">@{{created}}</div>
-           <button id='bookmark-delete' name='bookmark-delete' class='btn btn-mini btn-primary bookmark-delete' type='button'>删除</button>
-           <hr>
-  　　　</div>
+  <div class="totalBookmarksNum">共有{{bookmarks.length}}条记录</div>
+  <div class="search-item" id="search-item">
+    {{#each bookmarks}}
+    <div class="search-list">
+      <div class="search-list">
+        <button name='bookmark-delete' class='btn btn-mini btn-primary bookmark-delete' type='button'>删除</button>
+        <div class="bookmark-content">{{title}}</div>
+        <hr>
+      </div>
+    </div>
     {{/each}}
-        <button id="bookmark-add" class="btn btn-large btn-block btn-primary" type="button" data-toggle="modal" data-target="#addModal">增加</button>
-　 </div>
+    <ul class="pagination" id="pagination"></ul>
+    <button id="bookmark-add" class="btn btn-large btn-block btn-primary" type="button" data-toggle="modal" data-target="#addModal">增加</button>'
+  </div>
 </div>
 
-<!-- 模态框（AddModal） -->
+
+
+<!--AddModal -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog"
    aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
@@ -47,4 +52,4 @@
          </div>
       </div>
 </div>
-<!-- AddModel end -->
+<!-- AddModel End -->
